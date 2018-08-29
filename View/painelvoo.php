@@ -23,11 +23,13 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-        <title>Painel de Voo</title>
+        <title>Painel de Voos</title>
     </head>
     <body>
 
-
+        <?php
+            // header
+        ?>
 
         <div class="site">
             <div class="container">
@@ -54,6 +56,9 @@
             </div>
         </div>
 
+        <?php
+        // footer
+        ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -61,7 +66,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        <!--    FUNÇÕES JS REFERENTES A LISTAGEM    -->
+        <!-- FUNÇÕES JS REFERENTES AO PAINEL -->
         <script src="assets/js/functions-painelvoo.js"></script>
 
     </body>

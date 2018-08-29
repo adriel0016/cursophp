@@ -19,7 +19,7 @@ $(document).ready(function() {
     // Carregar CIA
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/CiaController.php',
         data: {
             acao: 'selecionartodos'
         },
@@ -28,14 +28,14 @@ $(document).ready(function() {
                 // result = JSON.parse(result);
 
                 $("#cia").html(
-                    '<option value="" selected>Selecione uma cia...</option>'
+                    ''
                 );
 
-                // result.forEach(function(obj, key) {
-                //     $("#cia").append(
-                //         '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
-                //     );
-                // });
+                result.forEach(function(obj, key) {
+                    $("#cia").append(
+                        ''
+                    );
+                });
 
             }
             else {
@@ -53,21 +53,21 @@ $(document).ready(function() {
         type: "POST",
         url: '',
         data: {
-            acao: 'selecionartodos'
+            acao: ''
         },
         success: function(result) {
             if(result) {
                 // result = JSON.parse(result);
 
                 $("#statusvoo").html(
-                    '<option value="" selected>Selecione um status...</option>'
+                    ''
                 );
 
-                // result.forEach(function(obj, key) {
-                //     $("#statusvoo").append(
-                //         '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
-                //     );
-                // });
+                result.forEach(function(obj, key) {
+                    $("#statusvoo").append(
+                        ''
+                    );
+                });
 
             }
             else {
@@ -85,21 +85,21 @@ $(document).ready(function() {
         type: "POST",
         url: '',
         data: {
-            acao: 'selecionartodos'
+            acao: ''
         },
         success: function(result) {
             if(result) {
                 // result = JSON.parse(result);
 
-                $("#estados").html(
+                $("#estado").html(
                     '<option value="" selected>Selecione um estado...</option>'
                 );
 
-                // result.forEach(function(obj, key) {
-                //     $("#estados").append(
-                //         '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
-                //     );
-                // });
+                result.forEach(function(obj, key) {
+                    $("#estado").append(
+                        ''
+                    );
+                });
 
             }
             else {
@@ -121,22 +121,21 @@ function selecionacidades(){
         type: "POST",
         url: '',
         data: {
-            acao: 'selecionarporestado',
-            codigoestado: $("#estados").val()
+            acao: ''
         },
         success: function(result) {
             if(result) {
                 // result = JSON.parse(result);
 
-                $("#cidades").html(
+                $("#cidade").html(
                     '<option value="" selected>Selecione uma cidade...</option>'
                 );
 
-                // result.forEach(function(obj, key) {
-                //     $("#cidades").append(
-                //         '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
-                //     );
-                // });
+                result.forEach(function(obj, key) {
+                    $("#cidade").append(
+                        ''
+                    );
+                });
 
             }
             else {
@@ -152,10 +151,78 @@ function selecionacidades(){
 
 function cadastrar(){
     // Cadastrar voo
+    $.ajax({
+        type: "POST",
+        url: '',
+        data: {
+            acao: ''
+        },
+        success: function(result) {
 
+            if(result > 0) {
+
+
+            }
+            else {
+                swal(
+                    'Ops!',
+                    'Não foi possível cadastrar o Voo!',
+                    'error'
+                );
+            }
+        },
+    });
 }
 
 function editar(codigo){
     // Editar voo
+    $.ajax({
+        type: "POST",
+        url: '',
+        data: {
+            acao: ''
+        },
+        success: function(result) {
 
+            if(result) {
+
+
+            }
+            else {
+                swal(
+                    'Ops!',
+                    'Não foi possível editar o Voo!',
+                    'error'
+                );
+            }
+        },
+    });
+}
+
+function selecionarvoo(codigo){
+    // Selecionar voo
+    $.ajax({
+        type: "POST",
+        url: '',
+        data: {
+            acao: '',
+            codigo: codigo
+        },
+        success: function(result) {
+
+            if(result) {
+
+
+
+
+            }
+            else {
+                swal(
+                    'Ops!',
+                    'Não foi possível selecionar o Voo!',
+                    'error'
+                );
+            }
+        },
+    });
 }

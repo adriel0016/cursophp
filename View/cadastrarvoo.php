@@ -29,6 +29,9 @@
     </head>
     <body>
 
+        <?php
+            // header
+        ?>
 
         <div class="site">
             <div class="container">
@@ -40,8 +43,6 @@
 
                                 </div>
                             </div>
-
-
                         </div>
                         <div class="card-footer">
 
@@ -55,7 +56,9 @@
             </div>
         </div>
 
-
+        <?php
+            // footer
+        ?>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -68,8 +71,14 @@
 
         <script src="assets/js/sweetalert.min.js"></script>
 
-        <!--    FUNÇÕES JS REFERENTES AO CADASTRO    -->
+        <!-- FUNÇÕES JS REFERENTES AO CADASTRO -->
         <script src="assets/js/functions-cadastrarvoo.js"></script>
+
+        <?php if(isset($_GET['codigo'])){ ?>
+            <script>
+                // selecionarvoo
+            </script>
+        <?php } ?>
 
     </body>
 </html>

@@ -10,13 +10,13 @@ $(document).ready(function() {
         },
         success: function(result) {
             if(result) {
-                // result = JSON.parse(result);
+                result = JSON.parse(result);
 
                 $("table tbody").html("");
 
-                // result.forEach(function(obj, key) {
-                //     $("table tbody").append('');
-                // });
+                result.forEach(function(obj, key) {
+                    $("table tbody").append('');
+                });
 
                 if(result.length === 0){
                     $("table tbody").append('');
@@ -34,11 +34,10 @@ $(document).ready(function() {
         },
     });
 
-    $('#loading').delay("2000").fadeOut();
-
 });
 
 function excluir(codigo){
+    // Excluir voo
     $.ajax({
         type: "POST",
         url: '',
@@ -49,8 +48,9 @@ function excluir(codigo){
         success: function(result) {
 
             if(result) {
-
-            } else {
+                location.reload();
+            }
+            else {
                 swal(
                     'Ops!',
                     'Não foi possível excluir um Voo!',
