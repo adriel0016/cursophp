@@ -30,7 +30,7 @@
     <body>
 
         <?php
-            // header
+            include_once "header.php";
         ?>
 
         <div class="site">
@@ -40,12 +40,48 @@
                         <div class="card-body">
                             <div class="form-row">
                                 <div class="form-group col-4">
+                                    <label>Identificação</label>
+                                    <input id="identificacao" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label>Portão</label>
+                                    <input id="portao" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label>Data do Voo</label>
+                                    <input id="datavoo" type="text" class="form-control" required>
+                                </div>
+                            </div>
 
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label>Companhia</label>
+                                    <select id="cia" class="form-control" required></select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Status do Voo</label>
+                                    <select id="statusvoo" class="form-control" required></select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label>Estado</label>
+                                    <select id="estado" class="form-control" onchange="selecionacidades()" required></select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Cidade</label>
+                                    <select id="cidade" class="form-control" required></select>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-
+                            <?php
+                                if(isset($_GET['codigo'])){ ?>
+                                    <button type="button" class="btn btn-sm btn-primary" style="float: right;" onclick="editar(<?= $_GET['codigo'] ?>)">Editar</button>
+                            <?php } else{ ?>
+                                     <button type="button" class="btn btn-sm btn-primary" style="float: right;" onclick="cadastrar()">Salvar</button>
+                            <?php } ?>
                         </div>
                     </div>
                 </form>
@@ -57,7 +93,7 @@
         </div>
 
         <?php
-            // footer
+            include_once "footer.php";
         ?>
 
         <!-- Optional JavaScript -->
@@ -76,7 +112,7 @@
 
         <?php if(isset($_GET['codigo'])){ ?>
             <script>
-                // selecionarvoo
+                selecionarvoo('<?= $_GET['codigo'] ?>');
             </script>
         <?php } ?>
 

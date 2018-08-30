@@ -25,15 +25,15 @@ $(document).ready(function() {
         },
         success: function(result) {
             if(result) {
-                // result = JSON.parse(result);
+                result = JSON.parse(result);
 
                 $("#cia").html(
-                    ''
+                    '<option value="" selected>Selecione uma cia...</option>'
                 );
 
                 result.forEach(function(obj, key) {
                     $("#cia").append(
-                        ''
+                        '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
                     );
                 });
 
@@ -51,21 +51,21 @@ $(document).ready(function() {
     // Carregar Status do Voo
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/StatusVooController.php',
         data: {
-            acao: ''
+            acao: 'selecionartodos'
         },
         success: function(result) {
             if(result) {
-                // result = JSON.parse(result);
+                result = JSON.parse(result);
 
                 $("#statusvoo").html(
-                    ''
+                    '<option value="" selected>Selecione um status...</option>'
                 );
 
                 result.forEach(function(obj, key) {
                     $("#statusvoo").append(
-                        ''
+                        '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
                     );
                 });
 
@@ -83,13 +83,13 @@ $(document).ready(function() {
     // Carregar Estados
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/EstadosController.php',
         data: {
-            acao: ''
+            acao: 'selecionartodos'
         },
         success: function(result) {
             if(result) {
-                // result = JSON.parse(result);
+                result = JSON.parse(result);
 
                 $("#estado").html(
                     '<option value="" selected>Selecione um estado...</option>'
@@ -97,7 +97,7 @@ $(document).ready(function() {
 
                 result.forEach(function(obj, key) {
                     $("#estado").append(
-                        ''
+                        '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
                     );
                 });
 
@@ -119,13 +119,14 @@ $(document).ready(function() {
 function selecionacidades(){
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/CidadesController.php',
         data: {
-            acao: ''
+            acao: 'selecionarporestado',
+            codigoestado: $("#estado").val()
         },
         success: function(result) {
             if(result) {
-                // result = JSON.parse(result);
+                result = JSON.parse(result);
 
                 $("#cidade").html(
                     '<option value="" selected>Selecione uma cidade...</option>'
@@ -133,7 +134,7 @@ function selecionacidades(){
 
                 result.forEach(function(obj, key) {
                     $("#cidade").append(
-                        ''
+                        '<option value="'+obj.codigo+'" class="text-center">'+ obj.nome +'</option>'
                     );
                 });
 
@@ -153,14 +154,28 @@ function cadastrar(){
     // Cadastrar voo
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/VooController.php',
         data: {
-            acao: ''
+            acao: 'cadastrar',
+            identificacao: $('#identificacao').val(),
+            portao: $('#portao').val(),
+            datavoo: $('#datavoo').val(),
+            cia: $('#cia').val(),
+            statusvoo: $('#statusvoo').val(),
+            cidade: $('#cidade').val(),
         },
         success: function(result) {
 
             if(result > 0) {
+                result = JSON.parse(result);
 
+                swal(
+                    'Opa!',
+                    'Voo cadastrado com sucesso!',
+                    'success'
+                );
+
+                $('form')[0].reset();
 
             }
             else {
@@ -178,14 +193,29 @@ function editar(codigo){
     // Editar voo
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/VooController.php',
         data: {
-            acao: ''
+            acao: 'editar',
+            identificacao: $('#identificacao').val(),
+            portao: $('#portao').val(),
+            datavoo: $('#datavoo').val(),
+            cia: $('#cia').val(),
+            statusvoo: $('#statusvoo').val(),
+            cidade: $('#cidade').val(),
+            codigo: codigo
         },
         success: function(result) {
 
             if(result) {
+                result = JSON.parse(result);
 
+                swal(
+                    'Opa!',
+                    'Voo editado com sucesso!',
+                    'success'
+                );
+
+                $('form')[0].reset();
 
             }
             else {
@@ -203,17 +233,24 @@ function selecionarvoo(codigo){
     // Selecionar voo
     $.ajax({
         type: "POST",
-        url: '',
+        url: '../Controller/VooController.php',
         data: {
-            acao: '',
+            acao: 'selecionar',
             codigo: codigo
         },
         success: function(result) {
 
             if(result) {
+                result = JSON.parse(result);
 
+                $('#identificacao').val(result.identificacao);
+                $('#portao').val(result.portao);
+                $('#datavoo').val(result.datavoo);
 
-
+                $('#cia').val(result.cia.codigo);
+                $('#statusvoo').val(result.statusvoo.codigo);
+                $('#estado').val(result.cidades.codigoestado);
+                $('#cidade').val(result.cidades.codigo);
 
             }
             else {

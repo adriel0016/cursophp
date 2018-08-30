@@ -28,7 +28,7 @@
     <body>
 
         <?php
-            // header
+            include_once "header.php";
         ?>
 
         <div class="site">
@@ -57,7 +57,7 @@
         </div>
 
         <?php
-        // footer
+            include_once "footer.php";
         ?>
 
         <!-- Optional JavaScript -->
