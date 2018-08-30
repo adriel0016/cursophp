@@ -6,24 +6,24 @@
  * Time: 10:23
  */
 
-namespace Controller\CiaController;
+namespace Controller\StatusVooController;
 
 require '../Model/Conexao.php';
-require '../Model/Cia.php';
+require '../Model/StatusVoo.php';
 
-use Model\Cia;
+use Model\StatusVoo;
 use Model\Conexao;
 
-class CiaController
+class StatusVooController
 {
     function selecionartodos(){
         $database = new Conexao();
         $db = $database->getConnection();
 
-        $cia = new Cia($db);
-        $cias = $cia->selecionartodos();
+        $status = new StatusVoo($db);
+        $statusvoo = $status->selecionartodos();
 
-        echo json_encode($cias, JSON_UNESCAPED_UNICODE);
+        echo json_encode($statusvoo, JSON_UNESCAPED_UNICODE);
     }
 }
 
@@ -37,8 +37,8 @@ $acao = htmlspecialchars($acao, ENT_QUOTES);
 
 switch ($acao){
     case 'selecionartodos':
-        $cia = new CiaController();
-        $cia->selecionartodos();
+        $status = new StatusVooController();
+        $status->selecionartodos();
 
         break;
     default:

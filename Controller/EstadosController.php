@@ -6,24 +6,24 @@
  * Time: 10:23
  */
 
-namespace Controller\CiaController;
+namespace Controller\EstadosController;
 
 require '../Model/Conexao.php';
-require '../Model/Cia.php';
+require '../Model/Estados.php';
 
-use Model\Cia;
+use Model\Estados;
 use Model\Conexao;
 
-class CiaController
+class EstadosController
 {
     function selecionartodos(){
         $database = new Conexao();
         $db = $database->getConnection();
 
-        $cia = new Cia($db);
-        $cias = $cia->selecionartodos();
+        $estado = new Estados($db);
+        $estados = $estado->selecionartodos();
 
-        echo json_encode($cias, JSON_UNESCAPED_UNICODE);
+        echo json_encode($estados, JSON_UNESCAPED_UNICODE);
     }
 }
 
@@ -37,8 +37,8 @@ $acao = htmlspecialchars($acao, ENT_QUOTES);
 
 switch ($acao){
     case 'selecionartodos':
-        $cia = new CiaController();
-        $cia->selecionartodos();
+        $estado = new EstadosController();
+        $estado->selecionartodos();
 
         break;
     default:
